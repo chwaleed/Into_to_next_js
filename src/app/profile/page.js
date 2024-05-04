@@ -17,6 +17,11 @@ function profile() {
     }
   };
 
+  const getUserDetails = async () => {
+    const res = await axios.get("/api/users/me");
+    setData(res.data.data._id);
+  };
+
   // const logout = async () => {
   //   try {
   //     await axios.get("/api/users/logout");
@@ -39,13 +44,13 @@ function profile() {
       <h1>Profile</h1>
       <hr />
       <p>Profile page</p>
-      {/* <h2 className="p-1 rounded bg-green-500">
+      <h2 className="p-1 rounded bg-green-500">
         {data === "nothing" ? (
           "Nothing"
         ) : (
           <Link href={`/profile/${data}`}>{data}</Link>
         )}
-      </h2> */}
+      </h2>
       <hr />
       <button
         onClick={logout}
@@ -54,12 +59,12 @@ function profile() {
         Logout
       </button>
 
-      {/* <button
+      <button
         onClick={getUserDetails}
         className="bg-green-800 mt-4 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
       >
         GetUser Details
-      </button> */}
+      </button>
     </div>
   );
 }
